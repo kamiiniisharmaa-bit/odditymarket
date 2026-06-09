@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>OddityMarket — Privacy & Secrecy Pact | Curios & Uncommon Finds</title>
+    <!-- Google Fonts for unique typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefaf5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e2a2f;
+            overflow-x: hidden;
+        }
+
+        /* unique brand palette — "Earthy Oddity" */
+        :root {
+            --ink-rust: #3d2b1f;
+            --faded-ochre: #e6cba0;
+            --dried-herb: #5e6b4b;
+            --ghost-lavender: #e2dae6;
+            --terra-cotta: #c97e5a;
+            --deep-moss: #2f3e2e;
+            --paper-stain: #f5efe7;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header & navigation */
+        .site-header {
+            background: #ffffffea;
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 3px solid var(--faded-ochre);
+            padding: 18px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #2e3b2c, #5e3a2c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .tag-icon {
+            font-size: 1.9rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-rust);
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terra-cotta);
+            border-bottom: 2px solid var(--terra-cotta);
+        }
+
+        .cart-icon {
+            background: var(--faded-ochre);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* privacy page specific styles */
+        .privacy-hero {
+            background: linear-gradient(120deg, #f4ede4 0%, #e8ddce 100%);
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin: 48px 0 32px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-hero::after {
+            content: "🔮";
+            font-size: 100px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            pointer-events: none;
+        }
+
+        .privacy-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--ink-rust);
+            margin-bottom: 16px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .privacy-hero p {
+            font-size: 1.1rem;
+            color: #5e4b38;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .privacy-hero .last-updated {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            background: var(--faded-ochre);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+        }
+
+        .privacy-content {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 48px;
+            margin: 32px 0 64px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0e2d4;
+        }
+
+        .privacy-section {
+            margin-bottom: 40px;
+            border-left: 4px solid var(--terra-cotta);
+            padding-left: 24px;
+        }
+
+        .privacy-section h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--deep-moss);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .privacy-section h2 .section-icon {
+            font-size: 1.8rem;
+        }
+
+        .privacy-section p {
+            line-height: 1.6;
+            margin-bottom: 14px;
+            color: #2c3a2e;
+        }
+
+        .privacy-section ul, .privacy-section ol {
+            margin: 12px 0 12px 28px;
+            line-height: 1.6;
+            color: #2c3a2e;
+        }
+
+        .privacy-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #f9f2e9;
+            padding: 20px 28px;
+            border-radius: 24px;
+            margin: 24px 0;
+            border: 1px solid var(--faded-ochre);
+        }
+
+        .back-to-shop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--deep-moss);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+
+        .back-to-shop:hover {
+            background: #4a6342;
+            transform: translateX(-4px);
+        }
+
+        footer {
+            border-top: 2px solid #eadbcb;
+            padding: 48px 0 32px;
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 780px) {
+            .privacy-hero h1 {
+                font-size: 2rem;
+            }
+            .privacy-content {
+                padding: 28px 20px;
+            }
+            .privacy-section {
+                padding-left: 16px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-flex">
+        <a href="#" style="text-decoration: none; display: flex; align-items: baseline; gap: 12px;" onclick="goToHomepage(event)">
+            <span class="tag-icon">⚙️🕰️</span>
+            <span class="brand-name">ODDITYMARKET</span>
+            <span class="tag-icon">🔮</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+        </div>
+        <div class="cart-icon">
+            🛒 <span>3</span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Privacy Hero Section -->
+        <div class="privacy-hero">
+            <h1>🔒 The Secrecy Pact</h1>
+            <p>Your privacy is as sacred as a whispered secret in a haunted library. Here's how we protect your curious data.</p>
+            <div class="last-updated">🌙 Last revised: June 10, 2026 — Waxing Gibbous Edition</div>
+        </div>
+
+        <!-- Privacy Main Content -->
+        <div class="privacy-content">
+            <div class="privacy-section">
+                <h2><span class="section-icon">📜</span> 1. Our Vow to You</h2>
+                <p>At OddityMarket ("the Cabinet", "we", "us", or "our"), we believe that your personal information deserves the same reverence as a rare first-edition grimoire. This Privacy Policy explains what data we collect, why we collect it, and how we keep it safe from prying eyes — digital or otherwise.</p>
+                <p>By visiting OddityMarket.com or making a purchase, you entrust us with your information. We take that responsibility seriously.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">📋</span> 2. What We Collect (and Why)</h2>
+                <p>We collect only the information necessary to fulfill your oddities, communicate with you, and improve your experience:</p>
+                <ul>
+                    <li><strong>Identity & Contact Data:</strong> Name, email address, shipping address, and phone number (so we can send your curiosities to the right place).</li>
+                    <li><strong>Order History:</strong> What you've bought, so we can remember your taste in strangeness and offer relevant recommendations.</li>
+                    <li><strong>Payment Information:</strong> We never store full credit card details. Payments are processed securely through third-party providers (Stripe/PayPal).</li>
+                    <li><strong>Browsing Behavior:</strong> IP address, browser type, and pages visited — used to improve our site and protect against fraudulent activity.</li>
+                    <li><strong>Communications:</strong> If you email us, we keep a record to provide better support.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>✨ The Honest Oddity Clause:</strong> We do NOT sell your personal data to third parties. Not now, not ever. Your information stays within the Cabinet.
+                </div>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">🍪</span> 3. Cookies & Digital Breadcrumbs</h2>
+                <p>Our website uses cookies — tiny text files stored on your device — to remember your preferences, keep your cart intact, and analyze site traffic. Think of them as friendly ghosts that make your browsing smoother.</p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> Required for the site to function (e.g., keeping you logged in).</li>
+                    <li><strong>Analytics Cookies:</strong> We use privacy-friendly analytics to see which oddities are most popular.</li>
+                    <li><strong>Marketing Cookies:</strong> Only with your consent, we may show you relevant ads (e.g., a reminder about that whispering folio you admired).</li>
+                </ul>
+                <p>You can disable cookies in your browser settings, but some features may become less magical (like saved carts).</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">🛡️</span> 4. How We Protect Your Secrets</h2>
+                <p>We implement industry-standard security measures:</p>
+                <ul>
+                    <li><strong>SSL Encryption:</strong> All data transferred between your browser and our servers is encrypted (look for the padlock icon).</li>
+                    <li><strong>Access Controls:</strong> Only essential team members (The Keepers) have access to customer data, and only when necessary.</li>
+                    <li><strong>Regular Audits:</strong> We scan for vulnerabilities and keep our systems updated.</li>
+                    <li><strong>Data Minimization:</strong> We only keep your data as long as needed (see Section 6).</li>
+                </ul>
+                <p>While no system is 100% invulnerable, we treat a breach like a cracked reliquary — with immediate action and full transparency.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">🤝</span> 5. Sharing With Trusted Allies</h2>
+                <p>We never sell your data. However, we do share limited information with third parties who help us run the Cabinet:</p>
+                <ul>
+                    <li><strong>Shipping Carriers:</strong> Your name and address go to USPS, FedEx, or Royal Mail so your oddity arrives safely.</li>
+                    <li><strong>Payment Processors:</strong> Stripe & PayPal handle your payment — we never see your full card number.</li>
+                    <li><strong>Email Service:</strong> We use a newsletter platform (e.g., Mailchimp) to send dispatches — only if you subscribe.</li>
+                    <li><strong>Legal Compliance:</strong> If required by law (court order, fraud investigation), we may disclose information.</li>
+                </ul>
+                <p>All our partners are contractually obligated to protect your data and use it only for the specified purpose.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">🗑️</span> 6. Data Retention — When We Let Go</h2>
+                <p>We keep your information only as long as necessary:</p>
+                <ul>
+                    <li><strong>Order records:</strong> 7 years (for tax and warranty purposes).</li>
+                    <li><strong>Newsletter subscribers:</strong> Until you unsubscribe (instant removal upon request).</li>
+                    <li><strong>Browsing analytics:</strong> Aggregated and anonymized after 26 months.</li>
+                </ul>
+                <p>If you'd like us to delete your account or personal data earlier, just ask (see Section 9).</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">👤</span> 7. Your Rights — The Curious Customer's Powers</h2>
+                <p>Depending on your location (especially if you're in the UK, EU, or California), you have rights over your data:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of all data we hold about you.</li>
+                    <li><strong>Correction:</strong> Fix inaccurate or incomplete information.</li>
+                    <li><strong>Deletion:</strong> Ask us to erase your data ("right to be forgotten").</li>
+                    <li><strong>Objection:</strong> Opt out of marketing or certain processing.</li>
+                    <li><strong>Portability:</strong> Receive your data in a machine-readable format.</li>
+                </ul>
+                <p>We will respond to any such request within 30 days. No magic spells required.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">🧒</span> 8. Children's Privacy — Minors in the Cabinet</h2>
+                <p>OddityMarket is intended for adults aged 18 and over. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with data, please contact us, and we will delete it promptly.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">🌍</span> 9. International Transfers</h2>
+                <p>Our Cabinet is based in the United Kingdom, but we ship oddities worldwide. If you are outside the UK, your data may be transferred to and processed in the UK or other countries where our service providers operate. We ensure appropriate safeguards (Standard Contractual Clauses) are in place for such transfers.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">📢</span> 10. Changes to This Pact</h2>
+                <p>We may update this Privacy Policy occasionally — for example, to reflect new practices or legal requirements. If we make material changes, we'll notify you via email (if you have an account) or via a banner on our website. The "Last revised" date at the top of this page will always indicate the latest version.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2><span class="section-icon">📧</span> 11. Contact the Keeper of Secrets</h2>
+                <p>If you have questions, concerns, or wish to exercise your data rights, please reach out to our Data Protection Keeper:</p>
+                <p><strong>Email:</strong> privacy@odditymarket.com<br>
+                <strong>Postal Raven:</strong> OddityMarket Privacy, 221B Curios Lane, London, EC1A 1BB, United Kingdom</p>
+                <p>You also have the right to lodge a complaint with the UK Information Commissioner's Office (ICO) if you believe we've mishandled your data.</p>
+            </div>
+
+            <!-- Additional reassurance box -->
+            <div class="highlight-box" style="background: var(--deep-moss); color: #fdf6ea; border-color: var(--faded-ochre);">
+                <p style="margin: 0; color: #fef3d6;"><strong>🔮 Summary:</strong> We collect only what we need, protect it fiercely, never sell it, and give you control. Your trust is our most valuable oddity.</p>
+            </div>
+
+            <!-- Back to homepage button -->
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="#" onclick="goToHomepage(event)" class="back-to-shop">
+                    ← Back to the Bazaar
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; width: 100%;">
+        <div class="footer-col">
+            <p><strong>ODDITYMARKET</strong></p>
+            <p>Curios for the curious soul</p>
+            <p>📍 Odditorium Lane, UK (online only)</p>
+        </div>
+        <div class="footer-col">
+            <p>✦ Help</p>
+            <p>✦ Returns & Exchanges</p>
+            <p>✦ Provenance policy</p>
+            <p><a href="#" onclick="goToTerms(event)" style="color: var(--terra-cotta); text-decoration: underline;">✦ Terms of Service</a></p>
+            <p><a href="#" onclick="goToPrivacy(event)" style="color: var(--terra-cotta); text-decoration: underline;">🔒 Privacy Policy</a></p>
+        </div>
+        <div class="footer-col">
+            <p>📸 IG: @oddity.market</p>
+            <p>🕯️ Cryptic support 24/7</p>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #ddd; padding-top: 24px;">
+        <p>© OddityMarket — The Secrecy Pact. Your privacy is protected with as much care as our rarest artifacts.</p>
+    </div>
+</footer>
+
+<script>
+    // Navigation helpers
+    function goToHomepage(event) {
+        if(event) event.preventDefault();
+        if (document.referrer && document.referrer.includes(window.location.host)) {
+            window.location.href = document.referrer;
+        } else {
+            alert("✨ Return to the OddityMarket homepage? (In a full site, you'd be redirected to the main shop.)");
+            window.location.href = "javascript:history.back()";
+        }
+    }
+
+    function goToTerms(event) {
+        if(event) event.preventDefault();
+        alert("📜 View our Terms of Service — a separate page exists in our full site. For now, enjoy the privacy page!");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToPrivacy(event) {
+        if(event) event.preventDefault();
+        // Already on privacy page, just scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Simulate cart counter (consistent with other pages)
+    const cartSpan = document.querySelector('.cart-icon span');
+    if(cartSpan) cartSpan.innerText = "3";
+
+    console.log("🔒 OddityMarket — Privacy Policy (Secrecy Pact) loaded. Your data is safe with us.");
+</script>
+</body>
+</html>

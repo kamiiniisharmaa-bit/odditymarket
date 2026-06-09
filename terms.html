@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>OddityMarket — Terms of Service | Curios & Uncommon Finds</title>
+    <!-- Google Fonts for unique typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefaf5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e2a2f;
+            overflow-x: hidden;
+        }
+
+        /* unique brand palette — "Earthy Oddity" */
+        :root {
+            --ink-rust: #3d2b1f;
+            --faded-ochre: #e6cba0;
+            --dried-herb: #5e6b4b;
+            --ghost-lavender: #e2dae6;
+            --terra-cotta: #c97e5a;
+            --deep-moss: #2f3e2e;
+            --paper-stain: #f5efe7;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header & navigation */
+        .site-header {
+            background: #ffffffea;
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 3px solid var(--faded-ochre);
+            padding: 18px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #2e3b2c, #5e3a2c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .tag-icon {
+            font-size: 1.9rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-rust);
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terra-cotta);
+            border-bottom: 2px solid var(--terra-cotta);
+        }
+
+        .cart-icon {
+            background: var(--faded-ochre);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* terms page specific styles */
+        .terms-hero {
+            background: linear-gradient(120deg, #f4ede4 0%, #efe3d4 100%);
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin: 48px 0 32px 0;
+            text-align: center;
+        }
+
+        .terms-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--ink-rust);
+            margin-bottom: 16px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .terms-hero p {
+            font-size: 1.1rem;
+            color: #4a3b2f;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .terms-hero .last-updated {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            background: var(--faded-ochre);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+        }
+
+        .terms-content {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 48px;
+            margin: 32px 0 64px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0e2d4;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+            border-left: 4px solid var(--terra-cotta);
+            padding-left: 24px;
+        }
+
+        .terms-section h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--deep-moss);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .terms-section h2 .section-icon {
+            font-size: 1.8rem;
+        }
+
+        .terms-section p {
+            line-height: 1.6;
+            margin-bottom: 14px;
+            color: #2c3a2e;
+        }
+
+        .terms-section ul, .terms-section ol {
+            margin: 12px 0 12px 28px;
+            line-height: 1.6;
+            color: #2c3a2e;
+        }
+
+        .terms-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #f9f2e9;
+            padding: 20px 28px;
+            border-radius: 24px;
+            margin: 24px 0;
+            border: 1px solid var(--faded-ochre);
+        }
+
+        .back-to-shop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--deep-moss);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+
+        .back-to-shop:hover {
+            background: #4a6342;
+            transform: translateX(-4px);
+        }
+
+        footer {
+            border-top: 2px solid #eadbcb;
+            padding: 48px 0 32px;
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 780px) {
+            .terms-hero h1 {
+                font-size: 2rem;
+            }
+            .terms-content {
+                padding: 28px 20px;
+            }
+            .terms-section {
+                padding-left: 16px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-flex">
+        <a href="#" style="text-decoration: none; display: flex; align-items: baseline; gap: 12px;" onclick="goToHomepage(event)">
+            <span class="tag-icon">⚙️🕰️</span>
+            <span class="brand-name">ODDITYMARKET</span>
+            <span class="tag-icon">🔮</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+        </div>
+        <div class="cart-icon">
+            🛒 <span>3</span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Terms Hero Section -->
+        <div class="terms-hero">
+            <h1>📜 The Covenant of Curiosities</h1>
+            <p>Our binding spell of fair trade, strange returns, and the fine print that keeps the oddities realm spinning.</p>
+            <div class="last-updated">🔮 Last updated: June 10, 2026 — New moon edition</div>
+        </div>
+
+        <!-- Terms Main Content -->
+        <div class="terms-content">
+            <div class="terms-section">
+                <h2><span class="section-icon">🏛️</span> 1. Acceptance of Terms</h2>
+                <p>By accessing or using OddityMarket.com (the "Cabinet"), you agree to be bound by these Terms of Service ("The Covenant"). If you find any part of these terms unacceptable, we kindly ask you to leave our curious bazaar. These terms apply to all visitors, collectors, and casual browsers.</p>
+                <div class="highlight-box">
+                    <strong>✨ Good faith clause:</strong> OddityMarket reserves the right to amend or update these terms whenever a new constellation appears or a mysterious discovery occurs. We'll notify you via raven (email) or a banner on our homepage.
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">🛒</span> 2. Oddities & Product Descriptions</h2>
+                <p>We take immense care in describing each artifact — from the "Void Sextant" to the "Whispering Folio". However, due to the unique nature of vintage and speculative curiosities:</p>
+                <ul>
+                    <li><strong>Patina & character:</strong> Many items are reclaimed, upcycled, or one-of-a-kind. Slight variations in color, texture, or metaphysical glow are part of their charm.</li>
+                    <li><strong>Images:</strong> All product images are working representations and may differ slightly from the exact piece you receive (unless stated "exact item shown").</li>
+                    <li><strong>Limited editions:</strong> Some oddities are produced in very small batches — once sold out, they may never return (but something stranger will appear).</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">💰</span> 3. Pricing & Payments</h2>
+                <p>All prices are listed in USD ($) and do not include applicable taxes or shipping fees, which are calculated at checkout. OddityMarket accepts major credit cards, PayPal, and the occasional barter of rare curios (contact our support).</p>
+                <ul>
+                    <li>We reserve the right to adjust prices at any time, but changes will not affect orders already placed.</li>
+                    <li>In the rare event of a pricing error, we will contact you before processing — you may cancel or accept the corrected price.</li>
+                    <li>All transactions are secured with arcane encryption (SSL) to protect your payment details.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">📦</span> 4. Shipping & The Wandering Parcel</h2>
+                <p>We ship worldwide from our Odditorium warehouse. Delivery times vary between 3–14 business days depending on your location (allow extra time for customs in faraway realms).</p>
+                <ul>
+                    <li><strong>Tracking:</strong> Every order receives a tracking number via email once dispatched.</li>
+                    <li><strong>Lost packages:</strong> If a parcel vanishes into the unknown for more than 20 days, contact us — we will investigate and either reship or refund.</li>
+                    <li><strong>Customs & duties:</strong> International buyers are responsible for any import fees or local taxes.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">🔄</span> 5. Returns & Exchanges (The Uncommon Return Policy)</h2>
+                <p>We want you to love your curiosity. If something isn't right, you have <strong>30 days from delivery</strong> to request a return or exchange.</p>
+                <div class="highlight-box">
+                    <strong>⚠️ Conditions for returns:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>Items must be unused, in original packaging (if applicable), and with all provenance cards.</li>
+                        <li>Final sale items: "Mystery Boxes", perishable curios, and personalized oddities cannot be returned unless defective.</li>
+                        <li>To start a return, email <strong>oddities@odditymarket.com</strong> with your order number and reason. We'll provide a return label.</li>
+                        <li>Refunds are processed within 7–10 business days after we receive and inspect the item.</li>
+                    </ul>
+                </div>
+                <p>For exchanges (swapping one oddity for another), just indicate the desired item. Any price difference will be adjusted.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">🔮</span> 6. The Curious Community & User Conduct</h2>
+                <p>We encourage reviews, discussions, and sharing your oddities on social media. However, you agree not to:</p>
+                <ul>
+                    <li>Post harmful, defamatory, or misleading content about OddityMarket or other customers.</li>
+                    <li>Attempt to hack, scrape, or overburden our website.</li>
+                    <li>Resell our items in a misleading way — we love small resellers but ask that you credit the original oddity.</li>
+                </ul>
+                <p>Violations may result in a ban from our Cabinet (and a sternly worded letter).</p>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">⚖️</span> 7. Limitation of Liability</h2>
+                <p>OddityMarket is not liable for any indirect, incidental, or consequential damages arising from the use or inability to use our products — whether due to supernatural interference, shipping mishaps, or general strangeness. Our total liability, to the extent permitted by law, shall not exceed the price you paid for the item in question.</p>
+                <p>Nothing in these terms excludes liability for fraud, death, or personal injury caused by our negligence.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">📖</span> 8. Intellectual Property & Oddity Lore</h2>
+                <p>All content on OddityMarket — including product descriptions, images, logos, and the term "Cabinet of Wonders" — is our intellectual property. You may not reproduce, distribute, or create derivative works without explicit written permission. However, feel free to share product pages with attribution.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">🌍</span> 9. Governing Law & Dispute Resolution</h2>
+                <p>These Terms shall be governed by the laws of the United Kingdom (where our Odditorium is based). Any disputes arising will first be attempted to be resolved informally through our support team. If not resolved, both parties agree to arbitration in London, UK, before any court action.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2><span class="section-icon">📧</span> 10. Contact the Keeper of Covenants</h2>
+                <p>If you have questions about these Terms, need to report a suspicious oddity, or wish to request permission for use of our content:</p>
+                <p><strong>Email:</strong> legal@odditymarket.com<br>
+                <strong>Postal raven:</strong> OddityMarket Legal, 221B Curios Lane, London, EC1A 1BB, United Kingdom</p>
+                <p>Our support team typically responds within 2 business days (excluding strange holidays).</p>
+            </div>
+
+            <!-- Additional note about entire agreement -->
+            <div class="highlight-box" style="background: var(--deep-moss); color: #fdf6ea; border-color: var(--faded-ochre);">
+                <p style="margin: 0; color: #fef3d6;"><strong>✨ Entire Agreement ✨</strong> — These Terms, together with our Privacy Policy and Shipping Guide, form the complete agreement between you and OddityMarket. By shopping with us, you acknowledge that you've read and accepted this Covenant of Curiosities.</p>
+            </div>
+
+            <!-- Back to homepage button -->
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="#" onclick="goToHomepage(event)" class="back-to-shop">
+                    ← Back to the Bazaar
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; width: 100%;">
+        <div class="footer-col">
+            <p><strong>ODDITYMARKET</strong></p>
+            <p>Curios for the curious soul</p>
+            <p>📍 Odditorium Lane, UK (online only)</p>
+        </div>
+        <div class="footer-col">
+            <p>✦ Help</p>
+            <p>✦ Returns & Exchanges</p>
+            <p>✦ Provenance policy</p>
+            <p><a href="#" onclick="goToTerms(event)" style="color: var(--terra-cotta); text-decoration: underline;">✦ Terms of Service</a></p>
+        </div>
+        <div class="footer-col">
+            <p>📸 IG: @oddity.market</p>
+            <p>🕯️ Cryptic support 24/7</p>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #ddd; padding-top: 24px;">
+        <p>© OddityMarket — The Covenant of Curiosities. Every oddity has a story, every term a purpose.</p>
+    </div>
+</footer>
+
+<script>
+    // Navigation helpers: maintain consistent experience linking back to homepage (or reload demo)
+    // Since we are on a standalone terms page, these functions will redirect to the index/homepage.
+    // For a full website, you would replace with actual URLs. For this demo, we simulate going back to the main shop page.
+    function goToHomepage(event) {
+        if(event) event.preventDefault();
+        // Redirect to the homepage (this file is separate, but in a real scenario you'd link to index.html)
+        // In this demo environment, we can show an alert or redirect to the same domain root.
+        // Since we have no actual server, we attempt to load the previous page from the same directory.
+        // For simplicity, we'll redirect to the referring page or show a helpful message.
+        // However, to keep functional and not break demo, we'll redirect to the current page but with a hash?
+        // Better approach: Because the Terms page is often a separate file, we can instruct the user.
+        // Actually for this demo, we can reload the main OddityMarket page if it exists in same folder.
+        // But we cannot guarantee. So we'll alert and provide a fallback link.
+        if (document.referrer && document.referrer.includes(window.location.host)) {
+            window.location.href = document.referrer;
+        } else {
+            // Fallback: suggest the user to go to root (simulate homepage)
+            alert("✨ Return to the OddityMarket homepage? (In a full site, you'd be redirected to the main shop.)");
+            // For demonstration, we reload the Terms page but no, better show a message and redirect via root path.
+            // Since this is a single file demo, we can just replace the current content with a simple message? Not ideal.
+            // Instead, we will actually redirect to the default location which would be the homepage – but we need to serve both pages.
+            // As we are working in a code preview environment, we can provide a manual link. But for UX, we'll open a new window? no.
+            // We'll use window.location.href = './' which might reload this Terms page if index not present. Hmm.
+            // To keep it clean, we will instead display a modal that the demo environment requires the main page separately.
+            // But since the user asked for terms page and home page are separate, I'll provide a safe redirect attempt.
+            window.location.href = "javascript:history.back()";
+        }
+    }
+
+    function goToTerms(event) {
+        if(event) event.preventDefault();
+        // Already on terms page, just scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Simulate cart count persistence (just for visual)
+    const cartSpan = document.querySelector('.cart-icon span');
+    if(cartSpan) {
+        cartSpan.innerText = "3";
+    }
+
+    // Add a little console flavor
+    console.log("📜 OddityMarket — Terms of Service page loaded. The Covenant is clear.");
+</script>
+</body>
+</html>

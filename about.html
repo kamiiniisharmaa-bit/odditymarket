@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>OddityMarket — About the Cabinet | Curios & Uncommon Finds</title>
+    <!-- Google Fonts for unique typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefaf5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e2a2f;
+            overflow-x: hidden;
+        }
+
+        /* unique brand palette — "Earthy Oddity" */
+        :root {
+            --ink-rust: #3d2b1f;
+            --faded-ochre: #e6cba0;
+            --dried-herb: #5e6b4b;
+            --ghost-lavender: #e2dae6;
+            --terra-cotta: #c97e5a;
+            --deep-moss: #2f3e2e;
+            --paper-stain: #f5efe7;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header & navigation */
+        .site-header {
+            background: #ffffffea;
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 3px solid var(--faded-ochre);
+            padding: 18px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #2e3b2c, #5e3a2c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .tag-icon {
+            font-size: 1.9rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-rust);
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terra-cotta);
+            border-bottom: 2px solid var(--terra-cotta);
+        }
+
+        .cart-icon {
+            background: var(--faded-ochre);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* about page specific styles */
+        .about-hero {
+            background: linear-gradient(135deg, #f4ede4 0%, #e8ddce 100%);
+            border-radius: 48px;
+            padding: 56px 48px;
+            margin: 48px 0 32px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: "✦ ✦ ✦";
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.05;
+            bottom: -20px;
+            right: -20px;
+            font-family: monospace;
+            pointer-events: none;
+        }
+
+        .about-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--ink-rust);
+            margin-bottom: 16px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .about-hero .tagline {
+            font-size: 1.2rem;
+            color: #5e4b38;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .story-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            margin: 56px 0;
+            align-items: center;
+        }
+
+        .story-text {
+            flex: 1.2;
+        }
+
+        .story-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--deep-moss);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .story-text h2:after {
+            content: '🔍';
+            margin-left: 12px;
+            font-size: 1.6rem;
+        }
+
+        .story-text p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #2c3a2e;
+            font-size: 1.05rem;
+        }
+
+        .story-image {
+            flex: 0.9;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 32px;
+            box-shadow: 16px 16px 0 var(--faded-ochre);
+            object-fit: cover;
+            height: auto;
+        }
+
+        /* mission & values cards */
+        .values-section {
+            background: white;
+            border-radius: 48px;
+            padding: 56px 48px;
+            margin: 48px 0;
+            border: 1px solid #f0e2d4;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+        }
+
+        .values-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--ink-rust);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 28px 20px;
+            background: #fdfaf7;
+            border-radius: 28px;
+            transition: 0.2s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            background: #fff7ef;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--terra-cotta);
+        }
+
+        .value-card p {
+            line-height: 1.5;
+            color: #4a5b48;
+        }
+
+        /* team section */
+        .team-section {
+            margin: 56px 0;
+        }
+
+        .team-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--deep-moss);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+            background: #ffffffd9;
+            border-radius: 32px;
+            padding: 28px 20px;
+            transition: 0.2s;
+            border: 1px solid #efe0d2;
+        }
+
+        .team-member img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--faded-ochre);
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .team-member .role {
+            color: var(--terra-cotta);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .team-member .bio {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #4a5a48;
+        }
+
+        /* newsletter signup */
+        .newsletter {
+            background: var(--deep-moss);
+            border-radius: 48px;
+            padding: 48px 40px;
+            text-align: center;
+            color: #fdf6ea;
+            margin: 56px 0;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .newsletter input {
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            width: 280px;
+            max-width: 70%;
+            margin-right: 12px;
+            font-family: inherit;
+        }
+
+        .newsletter button {
+            background: var(--faded-ochre);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            border-top: 2px solid #eadbcb;
+            padding: 48px 0 32px;
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .back-to-shop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--deep-moss);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+
+        .back-to-shop:hover {
+            background: #4a6342;
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 780px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            .about-hero {
+                padding: 36px 24px;
+            }
+            .values-section {
+                padding: 36px 24px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .story-image img {
+                box-shadow: 8px 8px 0 var(--faded-ochre);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-flex">
+        <a href="#" style="text-decoration: none; display: flex; align-items: baseline; gap: 12px;" onclick="goToHomepage(event)">
+            <span class="tag-icon">⚙️🕰️</span>
+            <span class="brand-name">ODDITYMARKET</span>
+            <span class="tag-icon">🔮</span>
+        </a>
+        <div class="nav-links">
+           <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+        </div>
+        <div class="cart-icon">
+            🛒 <span>3</span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- About Hero -->
+        <div class="about-hero">
+            <h1>The Cabinet of Curiosities</h1>
+            <div class="tagline">Where the forgotten, the whimsical, and the wonderfully strange find a new home.</div>
+        </div>
+
+        <!-- Origin Story -->
+        <div class="story-grid">
+            <div class="story-text">
+                <h2>Our Odd Origin</h2>
+                <p>OddityMarket began in a dusty attic above a London bookshop in 2021. Founder Elara Vesper, a collector of "things that don't quite fit", discovered a trove of Victorian-era oddities — a mechanical singing bird, a lunar map drawn on vellum, and a mirror that seemed to whisper. She realized the world needed a place for these misfit marvels.</p>
+                <p>What started as a small Etsy shop quickly grew into a full-blown cabinet of wonders. Today, we source from estate sales, independent makers, and forgotten archives across the globe. Every item in our collection tells a story — and we're just the custodians, passing them on to the next curious soul.</p>
+                <p><strong>We believe that the unusual shouldn't be hidden — it should be celebrated.</strong></p>
+            </div>
+            <div class="story-image">
+                <img src="https://picsum.photos/id/133/600/500" alt="Vintage cabinet filled with curiosities and oddities" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Mission & Values -->
+        <div class="values-section">
+            <h2>✦ Our Guiding Constellations ✦</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🔍</div>
+                    <h3>Authentic Discovery</h3>
+                    <p>Every oddity is verified, researched, and given a provenance card. No mass-produced fakery — only genuine curiosities with character.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Ethical Sourcing</h3>
+                    <p>We partner with responsible liquidators, eco-friendly workshops, and never support stolen or illegally traded artifacts.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📜</div>
+                    <h3>Storytelling First</h3>
+                    <p>Each listing includes the lore, history, or odd fact behind the object. You're not just buying a thing — you're adopting a story.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Curious Community</h3>
+                    <p>We host online gatherings, share restoration tips, and encourage collectors to share their own cabinets. Strangeness unites us.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meet the Keepers (Team) -->
+        <div class="team-section">
+            <h2>📡 The Keepers of the Cabinet</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elara Vesper - Founder" loading="lazy">
+                    <h3>Elara Vesper</h3>
+                    <div class="role">✦ Head Curator & Founder</div>
+                    <div class="bio">Former antiquarian book dealer with a passion for the peculiar. Elara personally vets every item that enters the cabinet.</div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Theo Bramble - Sourcing" loading="lazy">
+                    <h3>Theo Bramble</h3>
+                    <div class="role">🔎 Oddities Hunter</div>
+                    <div class="bio">Travels to estate sales, flea markets, and abandoned libraries across three continents. Finds the rarest gems.</div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mira Chen - Restoration" loading="lazy">
+                    <h3>Mira Chen</h3>
+                    <div class="role">⚙️ Restoration Witch</div>
+                    <div class="bio">Expert in preserving patina, repairing vintage mechanisms, and making sure each oddity functions (or beautifully doesn't).</div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Jasper Quill - Lorekeeper" loading="lazy">
+                    <h3>Jasper Quill</h3>
+                    <div class="role">📖 Lorekeeper & Writer</div>
+                    <div class="bio">Unearths the stories behind each artifact. If an item has a mystery, Jasper will find it and turn it into poetry.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What Makes Us Different -->
+        <div class="story-grid" style="flex-direction: row-reverse; margin-top: 20px;">
+            <div class="story-text">
+                <h2>Why We're Not Your Average Shop</h2>
+                <p>Most e-commerce sites treat products like commodities. We treat them like characters. When you buy from OddityMarket, you receive:</p>
+                <ul style="margin: 20px 0 20px 24px; line-height: 1.6;">
+                    <li>✨ A handwritten-style provenance card with the item's backstory</li>
+                    <li>✨ Packaging that feels like opening a time capsule (recycled, beautiful, and weird)</li>
+                    <li>✨ Access to our private "Curious Collectors" Discord</li>
+                    <li>✨ A surprise oddity sticker or vintage ephemera with every order</li>
+                </ul>
+                <p>We're not for everyone — and that's the point. If you've ever felt that the mass-produced world lacks soul, welcome home.</p>
+            </div>
+            <div class="story-image">
+                <img src="https://picsum.photos/id/20/600/500" alt="Mysterious antique objects on wooden shelf" loading="lazy">
+            </div>
+        </div>
+
+        <!-- The Odd Promise -->
+        <div class="highlight-box" style="background: #e7dfd1; border-radius: 32px; padding: 40px; text-align: center; margin: 40px 0;">
+            <div style="font-size: 3rem; margin-bottom: 16px;">📜</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 16px; color: var(--ink-rust);">The Oddity Promise</h3>
+            <p style="max-width: 700px; margin: 0 auto; line-height: 1.6;">If you're ever dissatisfied with the strangeness (or lack thereof) of your purchase, we offer a 30-day return window. No questions asked — though we might ask for a story in return. Every purchase helps us preserve forgotten artifacts and support independent oddity makers.</p>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="newsletter">
+            <h3>📬 Join the Curious Dispatch</h3>
+            <p>Strange stories, secret previews, and the occasional discount for the brave.</p>
+            <div style="margin-top: 24px;">
+                <input type="email" placeholder="your weirdest email" id="newsEmail">
+                <button id="subscribeBtn">Subscribe →</button>
+            </div>
+            <p id="subscribeMessage" style="margin-top: 20px; font-size: 0.85rem;"></p>
+        </div>
+
+        <!-- Back to Homepage -->
+        <div style="text-align: center; margin: 32px 0 48px;">
+            <a href="#" onclick="goToHomepage(event)" class="back-to-shop">
+                ← Return to the Bazaar
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; width: 100%;">
+        <div class="footer-col">
+            <p><strong>ODDITYMARKET</strong></p>
+            <p>Curios for the curious soul</p>
+            <p>📍 Odditorium Lane, UK (online only)</p>
+        </div>
+        <div class="footer-col">
+            <p>✦ Help</p>
+            <p>✦ Returns & Exchanges</p>
+            <p>✦ Provenance policy</p>
+            <p><a href="#" onclick="goToTerms(event)" style="color: var(--terra-cotta); text-decoration: underline;">✦ Terms of Service</a></p>
+        </div>
+        <div class="footer-col">
+            <p>📸 IG: @oddity.market</p>
+            <p>🕯️ Cryptic support 24/7</p>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #ddd; padding-top: 24px;">
+        <p>© OddityMarket — The Cabinet of Curiosities. Weird is wonderful.</p>
+    </div>
+</footer>
+
+<script>
+    // Navigation helpers
+    function goToHomepage(event) {
+        if(event) event.preventDefault();
+        if (document.referrer && document.referrer.includes(window.location.host)) {
+            window.location.href = document.referrer;
+        } else {
+            alert("✨ Return to the OddityMarket homepage? (In a full site, you'd be redirected to the main shop.)");
+            window.location.href = "javascript:history.back()";
+        }
+    }
+
+    function goToTerms(event) {
+        if(event) event.preventDefault();
+        // Simulate navigation to terms page - in real site would link to terms.html
+        alert("📜 View our Terms of Service — a separate page exists in our full site. For now, enjoy the about page!");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Newsletter subscription simulation
+    const subBtn = document.getElementById('subscribeBtn');
+    const messageSpan = document.getElementById('subscribeMessage');
+    const emailInput = document.getElementById('newsEmail');
+
+    subBtn?.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        if (!email || !email.includes('@')) {
+            messageSpan.innerText = '❔ Enter a valid email — even strange ones are welcome.';
+            messageSpan.style.color = '#c97e5a';
+            return;
+        }
+        messageSpan.innerHTML = '📜 Thanks, odd one! You’ll receive our curious dispatch soon.';
+        messageSpan.style.color = '#f2c94c';
+        emailInput.value = '';
+        setTimeout(() => {
+            messageSpan.innerText = '';
+        }, 4000);
+    });
+
+    // Cart counter simulation (just for visual consistency)
+    const cartSpan = document.querySelector('.cart-icon span');
+    if(cartSpan) cartSpan.innerText = "3";
+
+    console.log("📖 OddityMarket — About Us page loaded. The Cabinet welcomes you.");
+</script>
+</body>
+</html>

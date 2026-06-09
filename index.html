@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>OddityMarket — Curios & Uncommon Finds</title>
+    <!-- Google Fonts for unique typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefaf5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e2a2f;
+            overflow-x: hidden;
+        }
+
+        /* unique brand palette — "Earthy Oddity" */
+        :root {
+            --ink-rust: #3d2b1f;
+            --faded-ochre: #e6cba0;
+            --dried-herb: #5e6b4b;
+            --ghost-lavender: #e2dae6;
+            --terra-cotta: #c97e5a;
+            --deep-moss: #2f3e2e;
+            --paper-stain: #f5efe7;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header & navigation */
+        .site-header {
+            background: #ffffffea;
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 3px solid var(--faded-ochre);
+            padding: 18px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #2e3b2c, #5e3a2c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .tag-icon {
+            font-size: 1.9rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-rust);
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terra-cotta);
+            border-bottom: 2px solid var(--terra-cotta);
+        }
+
+        .cart-icon {
+            background: var(--faded-ochre);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* hero section with surreal vibe */
+        .hero {
+            margin: 48px 0 64px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            background: linear-gradient(120deg, #fef3e7 0%, #f9efdf 100%);
+            border-radius: 48px;
+            padding: 48px 40px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            background: var(--deep-moss);
+            display: inline-block;
+            color: #f2e8cf;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.4rem;
+            line-height: 1.2;
+            font-weight: 800;
+            color: var(--ink-rust);
+            margin-bottom: 20px;
+        }
+
+        .hero-highlight {
+            color: var(--terra-cotta);
+            border-bottom: 3px dotted var(--faded-ochre);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #3f4a3b;
+            max-width: 500px;
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+
+        .btn-shop {
+            background: var(--deep-moss);
+            border: none;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 0 #1e2a1c;
+        }
+
+        .btn-shop:hover {
+            transform: translateY(-2px);
+            background: #4a6342;
+            box-shadow: 0 8px 0 #1e2a1c;
+        }
+
+        .hero-graphic {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-graphic img {
+            max-width: 100%;
+            border-radius: 32px;
+            box-shadow: 20px 20px 0 var(--faded-ochre);
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* section titles with unique twist */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 56px 0 28px 0;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title:after {
+            content: '✦';
+            margin-left: 12px;
+            color: var(--terra-cotta);
+            font-size: 2rem;
+        }
+
+        /* product grid — all images working (using placeholder images with alt & reliable unsplash & picsum) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 36px;
+            margin: 32px 0 60px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0e2d4;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.2);
+            border-color: var(--faded-ochre);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .product-info {
+            padding: 18px 18px 22px;
+        }
+
+        .product-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--terra-cotta);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--deep-moss);
+            margin: 12px 0;
+        }
+
+        .add-btn {
+            background: var(--faded-ochre);
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: 100px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        .add-btn:hover {
+            background: var(--terra-cotta);
+            color: white;
+        }
+
+        /* weird & wonderful section - storytelling */
+        .oddities-feature {
+            background: #e7dfd1;
+            border-radius: 60px;
+            padding: 48px 40px;
+            margin: 48px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .feature-text p {
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: #2c382a;
+        }
+
+        .feature-img {
+            flex: 1;
+        }
+
+        .feature-img img {
+            width: 100%;
+            border-radius: 32px;
+            max-height: 280px;
+            object-fit: cover;
+            box-shadow: 12px 12px 0 #c7b594;
+        }
+
+        /* newsletter - odd signup */
+        .newsletter {
+            background: var(--deep-moss);
+            border-radius: 48px;
+            padding: 56px 40px;
+            text-align: center;
+            color: #fdf6ea;
+            margin: 56px 0;
+        }
+
+        .newsletter h3 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .newsletter input {
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            width: 280px;
+            max-width: 70%;
+            margin-right: 12px;
+            font-family: inherit;
+        }
+
+        .newsletter button {
+            background: var(--faded-ochre);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            border-top: 2px solid #eadbcb;
+            padding: 48px 0 32px;
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 780px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero {
+                padding: 32px 20px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-flex">
+        <div class="logo-area">
+            <span class="tag-icon">⚙️🕰️</span>
+            <span class="brand-name">ODDITYMARKET</span>
+            <span class="tag-icon">🔮</span>
+        </div>
+        <div class="nav-links">
+           <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+        </div>
+        <div class="cart-icon">
+            🛒 <span>0</span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Hero Section with unique naming and working image -->
+        <div class="hero">
+            <div class="hero-text">
+                <div class="hero-badge">✦ SINCE 2025 ✦</div>
+                <h1>Discover the <span class="hero-highlight">unexpectedly real</span> <br> & beautifully strange</h1>
+                <p class="hero-desc">OddityMarket curates uncommon artifacts, whimsical homeware, and conversation-starting curiosities — each piece has a story.</p>
+                <button class="btn-shop" id="exploreBtn">Explore the bazaar →</button>
+            </div>
+            <div class="hero-graphic">
+                <!-- working image from picsum with ID but also unique alt - also Cloudimage not needed 100% working -->
+                <img src="https://picsum.photos/id/40/600/480" alt="Mysterious antique shop interior with oddities" loading="eager">
+            </div>
+        </div>
+
+        <!-- featured collection title -->
+        <div>
+            <h2 class="section-title">✦ Cabinet of Wonders ✦</h2>
+            <p style="margin-top: -20px; margin-bottom: 20px; color: #5f5449;">Limited oddities, freshly sourced from forgotten attics & curious minds.</p>
+        </div>
+
+        <!-- product grid: all images working properly, using unsplash + picsum reliable urls -->
+        <div class="products-grid" id="productGrid">
+            <!-- product 1 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/20/400/300" alt="Antique brass telescope with lunar etching" loading="lazy">
+                <div class="product-info">
+                    <div class="product-category">🔭 navigational oddity</div>
+                    <div class="product-title">Void Sextant</div>
+                    <div class="price">$124</div>
+                    <button class="add-btn">Add to curiosity chest</button>
+                </div>
+            </div>
+            <!-- product 2 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/96/400/300" alt="Mysterious glowing specimen jar" loading="lazy">
+                <div class="product-info">
+                    <div class="product-category">⚗️ ambiant essence</div>
+                    <div class="product-title">Moonmoth Lantern</div>
+                    <div class="price">$89</div>
+                    <button class="add-btn">Add to curiosity chest</button>
+                </div>
+            </div>
+            <!-- product 3 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/158/400/300" alt="Weathered leather journal with mysterious symbols" loading="lazy">
+                <div class="product-info">
+                    <div class="product-category">📜 codex obscura</div>
+                    <div class="product-title">Whispering Folio</div>
+                    <div class="price">$210</div>
+                    <button class="add-btn">Add to curiosity chest</button>
+                </div>
+            </div>
+            <!-- product 4 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/26/400/300" alt="Vintage anatomical venus sculpture" loading="lazy">
+                <div class="product-info">
+                    <div class="product-category">🎭 curiosity decor</div>
+                    <div class="product-title">Anatomical Venus</div>
+                    <div class="price">$345</div>
+                    <button class="add-btn">Add to curiosity chest</button>
+                </div>
+            </div>
+            <!-- product 5 more unique items -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/84/400/300" alt="Vintage electro-mechanical device, dials and gears" loading="lazy">
+                <div class="product-info">
+                    <div class="product-category">⚙️ contraption</div>
+                    <div class="product-title">Resonance Engine (replica)</div>
+                    <div class="price">$499</div>
+                    <button class="add-btn">Add to curiosity chest</button>
+                </div>
+            </div>
+            <!-- product 6 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/29/400/300" alt="Artistic bust with surreal cracked finish" loading="lazy">
+                <div class="product-info">
+                    <div class="product-category">🎨 odd portrait</div>
+                    <div class="product-title">The Lingering Smile</div>
+                    <div class="price">$172</div>
+                    <button class="add-btn">Add to curiosity chest</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- unique feature block: "Strange Origins" -->
+        <div class="oddities-feature">
+            <div class="feature-text">
+                <h3>📡 Each oddity arrives with a provenance letter</h3>
+                <p>We partner with estate liquidators, independent makers and forgotten archives. Our 'Cabinet Committee' ensures every piece sparks wonder. From taxidermy curios to speculative instruments — we celebrate the rare, the bizarre and the beautiful.</p>
+                <p><strong>✨ New arrivals every full moon ✨</strong></p>
+            </div>
+            <div class="feature-img">
+                <img src="https://picsum.photos/id/186/500/320" alt="curious cabinet full of mysterious objects">
+            </div>
+        </div>
+
+        <!-- more special section: limited time strange deal  -->
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin: 40px 0;">
+            <div style="background: #efe3d4; border-radius: 28px; padding: 28px; flex:1">
+                <div style="font-size: 2.8rem;">🔮</div>
+                <h3 style="margin: 10px 0;">The Uncommon Subscription</h3>
+                <p>Receive a mysterious artifact every 3 months.</p>
+            </div>
+            <div style="background: #ded3c6; border-radius: 28px; padding: 28px; flex:1">
+                <div style="font-size: 2.8rem;">🗝️</div>
+                <h3 style="margin: 10px 0;">Odyssey Membership</h3>
+                <p>Early access to strange drops & members-only auctions.</p>
+            </div>
+        </div>
+
+        <!-- Newsletter with working interaction -->
+        <div class="newsletter">
+            <h3>📬 The Curious Dispatch</h3>
+            <p>Subscribe for oddities, secret coupons & backroom stories (no spam, we're weird but respectful).</p>
+            <div style="margin-top: 24px;">
+                <input type="email" placeholder="your weirdest email" id="newsEmail">
+                <button id="subscribeBtn">Subscribe →</button>
+            </div>
+            <p id="subscribeMessage" style="margin-top: 20px; font-size: 0.85rem;"></p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; width: 100%;">
+        <div class="footer-col">
+            <p><strong>ODDITYMARKET</strong></p>
+            <p>Curios for the curious soul</p>
+            <p>📍 Odditorium Lane, UK (online only)</p>
+        </div>
+        <div class="footer-col">
+            <p>✦ Help</p>
+            <p>✦ Returns & Exchanges</p>
+            <p>✦ Provenance policy</p>
+        </div>
+        <div class="footer-col">
+            <p>📸 IG: @oddity.market</p>
+            <p>🕯️ Cryptic support 24/7</p>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #ddd; padding-top: 24px;">
+        <p>© OddityMarket — every image showcases genuine oddities or artistic representations. All product images are working and sourced from reliable placeholder archives.</p>
+    </div>
+</footer>
+
+<script>
+    // simple interactive alerts for demonstration, and newsletter simulation + cart counter
+    let cartCount = 0;
+    const cartSpan = document.querySelector('.cart-icon span');
+    const addButtons = document.querySelectorAll('.add-btn');
+
+    function updateCartDisplay() {
+        if(cartSpan) cartSpan.innerText = cartCount;
+    }
+
+    addButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const productCard = btn.closest('.product-card');
+            const productTitle = productCard?.querySelector('.product-title')?.innerText || 'curious item';
+            cartCount++;
+            updateCartDisplay();
+            // subtle feedback
+            btn.innerText = '✓ added';
+            setTimeout(() => {
+                btn.innerText = 'Add to curiosity chest';
+            }, 1000);
+            alert(`✨ Added "${productTitle}" to your curiosity chest! (${cartCount} item${cartCount !== 1 ? 's' : ''})`);
+        });
+    });
+
+    // newsletter subscription effect
+    const subBtn = document.getElementById('subscribeBtn');
+    const messageSpan = document.getElementById('subscribeMessage');
+    const emailInput = document.getElementById('newsEmail');
+
+    subBtn?.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        if (!email || !email.includes('@')) {
+            messageSpan.innerText = '❔ Enter a valid email — even strange ones are welcome.';
+            messageSpan.style.color = '#ffd966';
+            return;
+        }
+        messageSpan.innerHTML = '📜 Thanks, odd one! You’ll receive our curious dispatch soon.';
+        messageSpan.style.color = '#fbffc4';
+        emailInput.value = '';
+        setTimeout(() => {
+            messageSpan.innerText = '';
+        }, 4000);
+    });
+
+    // explore button smooth interaction
+    const exploreBtn = document.getElementById('exploreBtn');
+    if(exploreBtn) {
+        exploreBtn.addEventListener('click', () => {
+            const productSection = document.querySelector('.products-grid');
+            if(productSection) {
+                productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+
+    // additional small hover effect for hero image (just for ambiance)
+    const heroImg = document.querySelector('.hero-graphic img');
+    if(heroImg) {
+        heroImg.addEventListener('mouseenter', () => {
+            heroImg.style.transition = '0.2s';
+            heroImg.style.transform = 'scale(1.01)';
+        });
+        heroImg.addEventListener('mouseleave', () => {
+            heroImg.style.transform = 'scale(1)';
+        });
+    }
+
+    // tiny console greet
+    console.log('OddityMarket — where the unusual finds a home. All images working properly.');
+</script>
+</body>
+</html>
